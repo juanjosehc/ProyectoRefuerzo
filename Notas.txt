@@ -1,0 +1,42 @@
+BASE DE DATOS
+CREATE DATABASE AppDistribuidora;
+GO
+USE AppDistribuidora;
+GO
+
+-- Módulo de Acceso (Usuarios)
+CREATE TABLE Users (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) UNIQUE NOT NULL,
+    Rol NVARCHAR(50) NOT NULL, -- Ej: Admin, Vendedor
+    PasswordHash NVARCHAR(255) NOT NULL
+);
+
+-- Módulo de Pedidos
+CREATE TABLE Orders (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    ClienteNombre NVARCHAR(100),
+    Telefono NVARCHAR(20),
+    FechaPedido DATETIME DEFAULT GETDATE(),
+    FechaEntrega DATETIME,
+    Vendedor NVARCHAR(100),
+    DireccionEntrega NVARCHAR(200)
+);
+
+-- Módulo de Rutas
+CREATE TABLE Routes (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    NombreRuta NVARCHAR(100),
+    ZonaAsignada NVARCHAR(100),
+    FechaCreacion DATETIME DEFAULT GETDATE(),
+    NumTiendas INT,
+    Descripcion NVARCHAR(255)
+);
+
+/---------------------------------------------------------/
+
+CORRER API:
+uvicorn main:app --reload --host 0.0.0.0
+
+/---------------------------------------------------------/
