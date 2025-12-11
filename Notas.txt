@@ -36,6 +36,20 @@ CREATE TABLE Routes (
 
 /---------------------------------------------------------/
 
+
+DEPENDENCIAS API
+
+pip install fastapi uvicorn sqlalchemy pyodbc passlib argon2-cffi
+
+/---------------------------------------------------------/
+
+DEPENDENCIAS FLUTTER
+
+flutter pub get
+
+/---------------------------------------------------------/
+
+
 CORRER API:
 uvicorn main:app --reload --host 0.0.0.0
 
